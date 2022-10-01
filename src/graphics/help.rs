@@ -99,7 +99,7 @@ impl Help {
 
             borrowed.entries.push_back(Entry::new(
                 "About:\
-                \nSource Code: git.
+                \nSource Code: https://github.com/CircuitFire/sudoku
                 \n"
             ));
         }

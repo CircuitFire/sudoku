@@ -44,24 +44,23 @@ impl<T: Clone> Vec2D<T> {
 
         if split < len - 1 {
             let (item, back) = back.split_at_mut(1);
-            return (&mut item[0], SplitVec::new(self.size, split, front, Some(back)))
+            return (&mut item[0], SplitVec::new(self.size, front, Some(back)))
         }
         else {
-            return (&mut back[0], SplitVec::new(self.size, split, front, None))
+            return (&mut back[0], SplitVec::new(self.size, front, None))
         }
     }
 }
 
 pub struct SplitVec<'a, T> {
     size:  Coord,
-    split: usize,
     front: &'a mut [T],
     back:  Option<&'a mut [T]>,
 }
 
 impl<'a, T> SplitVec<'a, T> {
-    fn new(size: Coord, split: usize, front: &'a mut [T], back: Option<&'a mut [T]>) -> Self {
-        Self { size, split, front, back }
+    fn new(size: Coord, front: &'a mut [T], back: Option<&'a mut [T]>) -> Self {
+        Self { size, front, back }
     }
 
     fn flat(&self, pos: Coord) -> usize {
