@@ -82,6 +82,10 @@ impl State {
 
         *node = Node::new(self.size);
 
+        if let Some(guess_id) = node.get_guess_id() {
+            self.guesses.remove(guess_id);
+        }
+
         self.finished.dec(pos);
         self.reset_possible();
     }
@@ -328,6 +332,7 @@ impl State {
             self.inc_guess();
 
             self.set(pos, solve);
+            self.nodes.get_mut(pos).set_guess_id(self.guesses.len());
             self.guesses.push(pos);
 
             true
@@ -355,6 +360,7 @@ impl State {
                 if let Some(num) = solve {
                     self.inc_guess();
                     self.set(pos, num);
+                    self.nodes.get_mut(pos).set_guess_id(self.guesses.len());
                     self.guesses.push(pos);
                 }
                 else {

@@ -3,6 +3,7 @@ use crate::prelude::*;
 #[derive(Clone, Debug)]
 pub struct FoundData {
     pub guess_level: usize,
+    pub guess_id:    Option<usize>,
     pub num:         usize,
     pub conflicts:   Vec<Coord>,
 }
@@ -127,9 +128,25 @@ impl Node {
     pub fn set(&mut self, num: usize, guess_level: usize) {
         *self = Self::Found(FoundData{
             guess_level,
+            guess_id: None,
             num,
             conflicts: Vec::new(),
         });
+    }
+
+    pub fn set_guess_id(&mut self, id: usize) {
+        if let Self::Found(ref mut data) = self {
+            data.guess_id = Some(id);
+        }
+    }
+
+    pub fn get_guess_id(&mut self) -> Option<usize>{
+        if let Self::Found(ref mut data) = self {
+            data.guess_id
+        }
+        else {
+            None
+        }
     }
 
     pub fn reset(&mut self, size: usize) {
