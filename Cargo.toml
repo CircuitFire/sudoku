@@ -1,0 +1,9 @@
+[package]
+name = "sudoku"
+version = "0.1.0"
+authors = ["CircuitFire"]
+edition = "2021"
+
+[dependencies]
+frames = {git = "https://github.com/CircuitFire/frames.git", rev = "209eba7"}
+text_io = "0.1.7"
