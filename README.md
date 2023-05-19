@@ -17,3 +17,11 @@ So on the "Windows protected your PC" window click "more info" and then the "run
 
 You can also compile it yourself. You will need the Rust lang installed, and then just clone the repo and use cargo build. I recomend running the program in its own terminal window insted of one build into anather program like VS codes terminal.
 
+# build
+- install Rust https://www.rust-lang.org
+- open project directory in a terminal(The one that contains Cargo.toml)
+- build and run
+  - "cargo run"
+- build
+  - "cargo build" output binary = "./target/debug/sudoku"
+  - or "cargo build --release" output binary = "./target/release/sudoku"
